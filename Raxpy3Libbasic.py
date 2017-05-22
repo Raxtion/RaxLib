@@ -5,6 +5,13 @@ import time
 import copy
 import platform
 ori_path = os.getcwd()
+'''
+history = 2013.03.28, 2013.03.29, 2013.03.31, 2013.04.02, 2013.04.16, 2013.04.17, 2013.04.18, 2013.04.24, 2013.04.26,
+          2013.04.28, 2013.04.30, 2013.05.09, 2013.05.13, 2013.05.15, 2013.05.16, 2013.05.24, 2013.05.30, 2013.06.02,
+          2013.06.05, 2013.06.10, 2013.06.14, 2013.07.01, 2013.07.09, 2013.07.10, 2013.07.30, 2013.08.02, 2013.09.06,
+          2013.09.11, 2013.09.14, 2013.10.02, 2013.11.10, 2013.11.12, 2013.11.27, 2013.11.30, 2013.12.02, 2013.12.10,
+          2013.12.31, 2013.01.09, 2014.01.13, 2014.02.05, 2014.12.15, 2015.03.02, 2017.05.22
+'''
 
 #-----------------------------------------------------------------------------------------------
 
@@ -481,7 +488,8 @@ class tabfilewithtitle:
         display_list.append(two_line)
         
         display = '\n'.join(display_list)+'\n'+str(self.len_Y-1)
-        
+
+        ori_path = os.getcwd()
         if file_name != '.txt':
             
             file_box = [{}, {}, {}]
@@ -880,7 +888,7 @@ def newOrderfile(title_list = ['order', 'A', 'B' ], group_list = [['a', 'b'], ],
     if outputFile_Name != '.txt':
         
         f = open(outputFile_Name, 'w')
-        f.write(table.report())
+        f.write(table.report(outputFile_Name))
         f.close()
         
         h = hashlib.new('ripemd160')
