@@ -1,5 +1,5 @@
 '''
-history =  2013.06.05, 2013.06.14, 2013.06.25, 2013.09.14, 2013.09.15, 2013.12.10, 2015.03.02
+history =  2013.06.05, 2013.06.14, 2013.06.25, 2013.09.14, 2013.09.15, 2013.12.10, 2015.03.02, 2017.09.28
 '''
 # there is a "#@" follow the list_name_in_code at the end of the code in processing_code
 # because list_name_in_code is the morker of the "file_name" list start_side.
@@ -50,7 +50,7 @@ def multiprocessing(jobs_list = [], processing_code = "", list_name_in_code = ""
         table = RaxLib.tabfilewithtitle()
         table.open(job_file, 'order')
 
-        A = '['+','.join(["'"+'\\t'.join('\\n'.join(x.split('@##@n@##@@')).split('#@#@t@#@#@'))+"'" for x in table.readrow('Y', 'job')])+']'
+        A = '['+','.join(["'"+'\\t'.join('\\n'.join(x.split('@##@n@##@@')).split('#@#@t@#@#@'))+"'" for x in table.readrow('Y', 'job') if x != 'job'])+']'
 
         #-----------------------------------------------------------------------------------------------
         #seperate processing_code
@@ -85,8 +85,8 @@ f.close()
     py_file_list = [x for x in file_list if 'py_' in x]
     print(py_file_list)
     for py_file in py_file_list:
-        print('python '+py_file+' &')
-        RaxLib.os.system('python '+py_file+' &')
+        print('python3 '+py_file+' &')
+        RaxLib.os.system('python3 '+py_file+' &')
 
     #-----------------------------------------------------------------------------------------------
     #check processing end or not
